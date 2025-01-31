@@ -5,9 +5,10 @@ import { IProduct } from './product.module';
   selector: 'bot-catalog',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
+ // styles: ['a {font-weight: bold;color: green;}']
 })
 export class CatalogComponent {
-  products:  any; //IProduct[];
+  products:  IProduct[]; //IProduct[];
   filter: String = '';
   constructor() {
     this.products = [
@@ -194,6 +195,15 @@ export class CatalogComponent {
   getFilteredProducts() {
     return this.filter===''
     ?this.products
-    :this.products.filter((product:any)=>product.category===this.filter);
+    :this.products.filter((product:IProduct)=>product.category===this.filter);
   }
+
+  getDiscountedClasses(product:IProduct) {
+     if (product.discount > 0) {
+      return 'strikethrough';
+     }else {
+      return ''
+     }
+  }
+
 }
