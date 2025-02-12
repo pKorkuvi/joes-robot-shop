@@ -7,8 +7,14 @@
       <a routerLink="/cart" routerLinkActive="active">Cart</a>
     </div>
   </div>
-  <div class="right">
+  <div class="right" *ngIf="!user">
     <a routerLink="/sign-in" routerLinkActive="active">Sign In</a>
     <a href="" class="cta">Register</a>
+  </div>
+  <div class="right" *ngIf="user">
+    <div>
+      <img src="/assets/images/profile.png" ((click))="toggleSignOut()" alt="profile"/>
+      <button (click)="signOut()" class="cta">Sign Out</button>
+    </div>
   </div>
 </div>

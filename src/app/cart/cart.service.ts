@@ -11,7 +11,7 @@ export class CartService {
   private cart: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>([]);
 
   constructor(private http: HttpClient) {
-    this.http.get<IProduct[]>('/api/cart').subscribe({
+    this.http.get<IProduct[]>('http://localhost:8081/api/carts/').subscribe({
       next: (cart) => this.cart.next(cart),
     });
   }
